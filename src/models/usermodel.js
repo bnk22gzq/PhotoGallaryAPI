@@ -35,3 +35,7 @@ const userSchema=new mongoose.Schema({
 const UserPhotoes=new mongoose.model('UserPhotoes',userSchema);
 
 module.exports=UserPhotoes;
+
+
+
+//api key: SNaRZnTsq9AZE2DdW74t64JBEI0ySHxxoampouCBfNd80dWUh9RfXHbEKNWcc0wt
