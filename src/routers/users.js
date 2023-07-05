@@ -2,6 +2,18 @@ const express=require("express");
 const router=new express.Router();
 const UseModel=require("../models/usermodel");
 
+//get message
+router.get('/',async(req,res)=>{
+    try{
+        res.status(201).send("welcome to the Photo gallary rest api");
+    }
+    catch(e)
+    {
+        res.status(400).send(e);
+    }
+
+})
+
 //create user
 router.post('/users',async(req,res)=>{
     try{
