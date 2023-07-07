@@ -66,12 +66,12 @@ router.post('/login', (req, res) => {
           })
           .catch((bcryptErr) => {
             console.error(bcryptErr);
-            res.status(500).json({ message: 'Internal Server Error' });
+            res.status(500).json({ message: 'Internal Server Error,password' });
           });
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'Internal Server Erro,user' });
       });
   });
 
