@@ -1,4 +1,6 @@
+const bcrypt=require("bcrypt");
 const mongoose=require('mongoose');
+
 
 const userSchema=new mongoose.Schema({
     username:{
@@ -25,13 +27,25 @@ const userSchema=new mongoose.Schema({
         trim:true,
         unique:true
     },
-    folder_path:{
-        type:String,
-        required:true,
-        trim:true,
-        unique:true
-    }
+   photoes:
+   {
+        type:Array,
+   }
 })
+
+userSchema.pre("save", async function (next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+    const salt = await bcrypt.genSalt(1);
+    this.password = bcrypt.hashSync(this.password, salt);
+    next();
+});
+
+userSchema.methods.matchPassword = async function(password) {
+    return await bcrypt.compare(password,this.password);
+};
+
 const UserPhotoes=new mongoose.model('UserPhotoes',userSchema);
 
 module.exports=UserPhotoes;
