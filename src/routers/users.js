@@ -91,7 +91,7 @@ router.get('/users/:rfid',async(req,res,next)=>{
 })
 
 //..........................................private.....................................................
-//post photoes using patch request..............
+//put photoes using patch request..............
 router.patch('/users/:rfid',verifyToken,async(req,res,next)=>{
     try
     {
@@ -104,10 +104,6 @@ router.patch('/users/:rfid',verifyToken,async(req,res,next)=>{
         res.status(400).send(e);
     }
 })
-
-
-
-
 
 //get specific user
 // router.get('/users/:rfid',async(req,res)=>{
